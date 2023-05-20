@@ -10,3 +10,9 @@ Due to the cost of living crisis, there is an increase in demand for food banks,
 <img src="https://i.imgur.com/iqRqZ2V.png" alt="Green New Pantry-Mate Logo" width="200"/>
 </div>
 <hr>
+
+**Resources**
+* https://www.freecodecamp.org/news/comprehensive-guide-for-color-usage-in-web-design-e2a9afce09fb/#:~:text=Purple%3A%20Royalty%2C%20luxury%2C%20creativity,%3A%20Conservative%2C%20modernity%2C%20luxury.
+* https://colorhunt.co/palettes/food
+
+<hr>
