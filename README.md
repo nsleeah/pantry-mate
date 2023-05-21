@@ -31,3 +31,10 @@ Due to the cost of living crisis, there is an increase in demand for food banks,
 
 
 <hr>
+
+**Technologies used** 💻
+* Spring Boot
+* Java 17
+* PostgreSQL
+* Hibernate
+* Postman
