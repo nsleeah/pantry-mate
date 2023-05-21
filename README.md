@@ -16,3 +16,18 @@ Due to the cost of living crisis, there is an increase in demand for food banks,
 * https://colorhunt.co/palettes/food
 
 <hr>
+
+
+**Planning** - **ERD Diagram** &
+**UML Diagram**<br>
+<div style="display: flex; gap: 10px;">
+<img src="https://i.imgur.com/620LDLf.png" alt="ERD Diagram" width="400"/>
+<img src="https://i.imgur.com/cV1bRpn.png" alt="UML Diagram" width="400"/>
+</div>
+
+<br>
+
+
+
+
+<hr>
