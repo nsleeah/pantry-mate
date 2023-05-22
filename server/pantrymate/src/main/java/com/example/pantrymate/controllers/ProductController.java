@@ -26,7 +26,7 @@ public class ProductController {
 
     @PostMapping("/addNew")
     public String addNewProduct(@RequestBody Product product) {
-        Product newProduct = new Product(product.getName(), product.getDescription(), product.getExpiresOn(), product.getCategory(), product.getInventories());
+        Product newProduct = new Product(product.getName(), product.getDescription(), product.getExpiresOn(), product.getCategory());
         productService.addProduct(newProduct);
         return "Product successfully added!";
     }

@@ -24,28 +24,23 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private CategoryEnum category;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Inventory> inventories;
-
     //Constructor
     public Product() {
     }
 
-    public Product(Long id, String name, String description, LocalDate expiresOn, CategoryEnum category, List<Inventory> inventories) {
+    public Product(Long id, String name, String description, LocalDate expiresOn, CategoryEnum category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.expiresOn = expiresOn;
         this.category = category;
-        this.inventories = inventories;
     }
 
-    public Product(String name, String description, LocalDate expiresOn, CategoryEnum category, List<Inventory> inventories) {
+    public Product(String name, String description, LocalDate expiresOn, CategoryEnum category) {
         this.name = name;
         this.description = description;
         this.expiresOn = expiresOn;
         this.category = category;
-        this.inventories = inventories;
     }
 
     //Getters and Setters
@@ -89,13 +84,6 @@ public class Product {
         this.category = category;
     }
 
-    public List<Inventory> getInventories() {
-        return inventories;
-    }
-
-    public void setInventories(List<Inventory> inventories) {
-        this.inventories = inventories;
-    }
 
     //To String
 
@@ -107,7 +95,6 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", expiresOn=" + expiresOn +
                 ", category=" + category +
-                ", inventories=" + inventories +
                 '}';
     }
 }
