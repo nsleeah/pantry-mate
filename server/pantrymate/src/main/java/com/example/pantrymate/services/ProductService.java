@@ -46,10 +46,6 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    //SAVE
-    public void save(Product product) {
-        productRepository.save(product);
-    }
-    
+
 
 }
