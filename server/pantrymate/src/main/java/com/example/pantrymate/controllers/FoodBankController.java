@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/foodBanks")
 public class FoodBankController {
@@ -14,9 +16,8 @@ public class FoodBankController {
     private FoodBankService foodBankService;
 
     @GetMapping()
-    public Iterable<FoodBank> getFoodBanks() {
-        Iterable<FoodBank> foodBanks = foodBankService.getAllFoodBanks();
-        return foodBanks;
+    public List<FoodBank> getAllFoodBanks() {
+        return foodBankService.getAllFoodBanks();
     }
 
     @GetMapping("/{id}")
@@ -41,10 +42,11 @@ public class FoodBankController {
         return ResponseEntity.ok("Foodbank updated!");
     }
 
+
     @DeleteMapping("/{id}")
-    public String deleteFoodBank(@PathVariable("id") Long id) {
+    public ResponseEntity<FoodBank> deleteFoodBank(@PathVariable Long id){
         foodBankService.deleteFoodBank(id);
-        return "Food Bank successfully deleted!";
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     //Routes Tested via Postman.
