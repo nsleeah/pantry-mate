@@ -22,6 +22,7 @@ public class Product {
     private LocalDate expiresOn;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "category")
     private CategoryEnum category;
 
     //Constructor

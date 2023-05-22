@@ -14,14 +14,12 @@ public class Inventory {
         @Column
         private Long id;
 
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "product_id", nullable = false)
-        @JsonIgnoreProperties("inventories")
         private Product product;
 
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "foodbank_id", nullable = false)
-        @JsonIgnoreProperties("inventories")
         private FoodBank foodBank;
 
         @Column(name = "quantity")
