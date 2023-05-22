@@ -14,11 +14,11 @@ public class Inventory {
         @Column
         private Long id;
 
-        @ManyToOne(fetch = FetchType.LAZY)
+        @ManyToOne
         @JoinColumn(name = "product_id", nullable = false)
         private Product product;
 
-        @ManyToOne(fetch = FetchType.LAZY)
+        @ManyToOne
         @JoinColumn(name = "foodbank_id", nullable = false)
         private FoodBank foodBank;
 

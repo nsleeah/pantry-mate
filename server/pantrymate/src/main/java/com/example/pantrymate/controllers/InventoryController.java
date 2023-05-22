@@ -18,9 +18,10 @@ public class InventoryController {
     @Autowired
     private InventoryService inventoryService;
 
-    @GetMapping()
-    public List<Inventory> getAllInventories() {
-        return inventoryService.getAllInventories();
+    @GetMapping
+    public ResponseEntity<List<Inventory>> getAllInventories() {
+        List<Inventory> inventories = inventoryService.getAllInventories();
+        return ResponseEntity.ok(inventories);
     }
 
     @GetMapping("/{id}")
@@ -28,24 +29,25 @@ public class InventoryController {
         return inventoryService.getInventoryById(id);
     }
 
-    @PostMapping("/addNew") //Not Working
-    public String addNewInventory(@RequestBody Inventory inventory) {
+    @PostMapping("/addNew") //Working
+    public ResponseEntity<Inventory> addInventory(@RequestBody Inventory inventory) {
         Inventory newInventory = new Inventory(inventory.getProduct(), inventory.getFoodBank(), inventory.getQuantity());
-        inventoryService.addInventory(newInventory);
-        return "New Inventory successfully added!";
+        inventoryService.addInventory(inventory);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newInventory);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventory, @PathVariable Long id) {
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateInventory(@PathVariable("id") Long id, @RequestBody Inventory inventory) {
         inventory.setId(id);
         Inventory updatedInventory = inventoryService.updateInventory(inventory);
         if (updatedInventory == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(updatedInventory, HttpStatus.OK);
+        return ResponseEntity.ok("Inventory updated!");
     }
+    //Check Update Method
 
-    @DeleteMapping("/{id}") //Working
+    @DeleteMapping("/{id}")
     public String deleteInventory(@PathVariable("id") Long id) {
         inventoryService.deleteInventory(id);
         return "Inventory successfully deleted!";

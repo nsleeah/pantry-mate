@@ -1,5 +1,6 @@
 package com.example.pantrymate.services;
 
+import com.example.pantrymate.models.FoodBank;
 import com.example.pantrymate.models.Inventory;
 import com.example.pantrymate.repositories.FoodBankRepository;
 import com.example.pantrymate.repositories.InventoryRepository;
@@ -42,6 +43,7 @@ public class InventoryService {
             return null;
         }
     }
+
 
     //DELETE
     public void deleteInventory(Long id) {
