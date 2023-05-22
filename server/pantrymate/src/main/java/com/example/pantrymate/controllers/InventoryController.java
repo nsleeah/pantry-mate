@@ -1,11 +1,15 @@
 package com.example.pantrymate.controllers;
 
+import com.example.pantrymate.models.FoodBank;
 import com.example.pantrymate.models.Inventory;
+import com.example.pantrymate.models.Product;
 import com.example.pantrymate.services.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/inventories")
@@ -15,9 +19,8 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @GetMapping()
-    public Iterable<Inventory> getInventories() {
-        Iterable<Inventory> inventory = inventoryService.getAllInventories();
-        return inventory;
+    public List<Inventory> getAllInventories() {
+        return inventoryService.getAllInventories();
     }
 
     @GetMapping("/{id}")
@@ -28,18 +31,18 @@ public class InventoryController {
     @PostMapping("/addNew") //Not Working
     public String addNewInventory(@RequestBody Inventory inventory) {
         Inventory newInventory = new Inventory(inventory.getProduct(), inventory.getFoodBank(), inventory.getQuantity());
-        inventoryService.addNewInventory(newInventory);
+        inventoryService.addInventory(newInventory);
         return "New Inventory successfully added!";
     }
 
-    @PutMapping("/update/{id}") //Not Working
-    public ResponseEntity<String> updateInventory(@PathVariable("id") Long id, @RequestBody Inventory inventory) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventory, @PathVariable Long id) {
         inventory.setId(id);
         Inventory updatedInventory = inventoryService.updateInventory(inventory);
         if (updatedInventory == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.ok("Inventory updated!");
+        return new ResponseEntity<>(updatedInventory, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}") //Working

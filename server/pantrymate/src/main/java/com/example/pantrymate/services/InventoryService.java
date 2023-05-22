@@ -19,7 +19,7 @@ public class InventoryService {
     //CRUD
 
     //CREATE
-    public Inventory addNewInventory(Inventory inventory) {
+    public Inventory addInventory(Inventory inventory) {
         return inventoryRepository.save(inventory);
     }
 
@@ -47,6 +47,7 @@ public class InventoryService {
     public void deleteInventory(Long id) {
         inventoryRepository.deleteById(id);
     }
+
 
 
 }
