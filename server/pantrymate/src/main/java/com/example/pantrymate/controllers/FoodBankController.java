@@ -26,7 +26,7 @@ public class FoodBankController {
 
     @PostMapping("/addNew")
     public String addNewFoodBank(@RequestBody FoodBank foodBank) {
-        FoodBank newFoodBank = new FoodBank(foodBank.getName(), foodBank.getAddress(), foodBank.getContactNumber(), foodBank.getInventories());
+        FoodBank newFoodBank = new FoodBank(foodBank.getName(), foodBank.getAddress(), foodBank.getContactNumber());
         foodBankService.addNewFoodBank(newFoodBank);
         return "New Food Bank successfully added!";
     }

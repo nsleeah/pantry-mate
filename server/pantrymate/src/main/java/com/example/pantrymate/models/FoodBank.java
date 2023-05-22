@@ -22,26 +22,22 @@ public class FoodBank {
     @Column(name = "contact_number")
     private String contactNumber;
 
-    @OneToMany(mappedBy = "foodBank", cascade = CascadeType.ALL)
-    private List<Inventory> inventories;
-
     //Constructors
     public FoodBank() {
     }
 
-    public FoodBank(Long id, String name, String address, String contactNumber, List<Inventory> inventories) {
+    public FoodBank(Long id, String name, String address, String contactNumber) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
-        this.inventories = inventories;
     }
 
-    public FoodBank(String name, String address, String contactNumber, List<Inventory> inventories) {
+    public FoodBank(String name, String address, String contactNumber) {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
-        this.inventories = inventories;
+
     }
 
     //Getters and Setters
@@ -77,13 +73,6 @@ public class FoodBank {
         this.contactNumber = contactNumber;
     }
 
-    public List<Inventory> getInventories() {
-        return inventories;
-    }
-
-    public void setInventories(List<Inventory> inventories) {
-        this.inventories = inventories;
-    }
 
     //To String
     @Override
@@ -93,7 +82,6 @@ public class FoodBank {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contactNumber='" + contactNumber + '\'' +
-                ", inventories=" + inventories +
                 '}';
     }
 }
