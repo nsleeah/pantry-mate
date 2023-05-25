@@ -25,6 +25,10 @@ public class Product {
     @Column(name = "category")
     private CategoryEnum category;
 
+    //To Address @PutMapping - Updating Inventories.
+    //@OneToMany
+    //private List<Inventory> inventoryList = new ArrayList<>();
+
     //Constructor
     public Product() {
     }

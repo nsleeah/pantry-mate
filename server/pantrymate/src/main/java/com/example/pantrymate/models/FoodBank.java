@@ -22,6 +22,10 @@ public class FoodBank {
     @Column(name = "contact_number")
     private String contactNumber;
 
+    //To Address @PutMapping - Updating Inventories.
+    //@OneToMany
+    //private List<Inventory> inventoryList = new ArrayList<>();
+
     //Constructors
     public FoodBank() {
     }

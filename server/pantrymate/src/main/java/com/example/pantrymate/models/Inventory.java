@@ -25,6 +25,7 @@ public class Inventory {
         @Column(name = "quantity")
         private int quantity;
 
+
         //Constructor
         public Inventory() {
         }

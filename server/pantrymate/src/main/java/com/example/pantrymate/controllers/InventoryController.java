@@ -35,17 +35,8 @@ public class InventoryController {
         return inventoryService.getInventoryById(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateInventory(@PathVariable("id") Long id, @RequestBody Inventory inventory) {
-        inventory.setId(id);
-        Inventory updatedInventory = inventoryService.updateInventory(inventory);
-        if (updatedInventory == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.ok("Inventory updated!");
-    }
-    //Check Update Method
 
+    //@Put
 
     @PostMapping("/addNew") //Working
     public ResponseEntity<Inventory> addInventory(@RequestBody Inventory inventory) {
@@ -54,7 +45,7 @@ public class InventoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newInventory);
     }
 
-    
+
 
     @DeleteMapping("/{id}")
     public String deleteInventory(@PathVariable("id") Long id) {
