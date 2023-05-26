@@ -24,14 +24,14 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    @PostMapping("/addNew")
+    @PostMapping()
     public String addNewProduct(@RequestBody Product product) {
         Product newProduct = new Product(product.getName(), product.getDescription(), product.getExpiresOn(), product.getCategory());
         productService.addProduct(newProduct);
         return "Product successfully added!";
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
         product.setId(id);
         Product updatedProduct = productService.updateProduct(product);
