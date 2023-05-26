@@ -39,17 +39,17 @@ public class InventoryController {
     }
 
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateInventory(@PathVariable("id") Long id, @RequestBody Inventory inventory) {
         inventory.setId(id);
         Inventory updatedInventory = inventoryService.updateInventory(inventory);
         if (updatedInventory == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.ok("Foodbank updated!");
+        return ResponseEntity.ok("Inventory updated!");
     }
 
-    @PostMapping("/addNew") //Working
+    @PostMapping()
     public ResponseEntity<Inventory> addInventory(@RequestBody Inventory inventory) {
         //Inventory newInventory = inventoryService.addInventory(inventory);
         Inventory newInventory = inventoryRepository.save(inventory);
