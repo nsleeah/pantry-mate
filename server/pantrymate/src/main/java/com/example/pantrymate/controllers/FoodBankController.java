@@ -25,14 +25,14 @@ public class FoodBankController {
         return foodBankService.getFoodBankById(id);
     }
 
-    @PostMapping("/addNew")
+    @PostMapping()
     public String addNewFoodBank(@RequestBody FoodBank foodBank) {
         FoodBank newFoodBank = new FoodBank(foodBank.getName(), foodBank.getAddress(), foodBank.getContactNumber());
         foodBankService.addNewFoodBank(newFoodBank);
         return "New Food Bank successfully added!";
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateFoodBank(@PathVariable("id") Long id, @RequestBody FoodBank foodBank) {
         foodBank.setId(id);
         FoodBank updatedFoodBank = foodBankService.updateFoodBank(foodBank);
@@ -49,6 +49,14 @@ public class FoodBankController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    //Routes Tested via Postman.
+    //Routes Tested via Postman 26
+    //@PostMapping - JSON
+    //{
+    //        "name": "Hackney New",
+    //        "address": "456 Hackney Rd, London E2 9ED",
+    //        "contactNumber": "020 9876 5432",
+    //        "inventoryList": [
+    //        ]
+    //    }
 
 }
