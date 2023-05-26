@@ -16,10 +16,12 @@ public class Inventory {
 
         @ManyToOne
         @JoinColumn(name = "product_id", nullable = false)
+        @JsonIgnoreProperties({"inventoryList"})
         private Product product;
 
         @ManyToOne
-        @JoinColumn(name = "foodbank_id", nullable = false)
+        @JoinColumn(name = "foodBank_id", nullable = false)
+        @JsonIgnoreProperties({"inventoryList"})
         private FoodBank foodBank;
 
         @Column(name = "quantity")

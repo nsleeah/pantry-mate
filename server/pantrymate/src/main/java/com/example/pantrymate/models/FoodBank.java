@@ -1,7 +1,9 @@
 package com.example.pantrymate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //Properties
@@ -23,8 +25,9 @@ public class FoodBank {
     private String contactNumber;
 
     //To Address @PutMapping - Updating Inventories.
-    //@OneToMany
-    //private List<Inventory> inventoryList = new ArrayList<>();
+    @OneToMany(mappedBy = "foodBank", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"foodBank"})
+    private List<Inventory> inventoryList;
 
     //Constructors
     public FoodBank() {
@@ -35,6 +38,7 @@ public class FoodBank {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
+        this.inventoryList = new ArrayList<>();
     }
 
     public FoodBank(String name, String address, String contactNumber) {
@@ -77,6 +81,13 @@ public class FoodBank {
         this.contactNumber = contactNumber;
     }
 
+    public List<Inventory> getInventoryList() {
+        return inventoryList;
+    }
+
+    public void setInventoryList(List<Inventory> inventoryList) {
+        this.inventoryList = inventoryList;
+    }
 
     //To String
     @Override

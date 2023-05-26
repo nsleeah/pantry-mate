@@ -1,8 +1,10 @@
 package com.example.pantrymate.models;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jdk.jfr.DataAmount;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,8 +28,9 @@ public class Product {
     private CategoryEnum category;
 
     //To Address @PutMapping - Updating Inventories.
-    //@OneToMany
-    //private List<Inventory> inventoryList = new ArrayList<>();
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"product"})
+    private List<Inventory> inventoryList;
 
     //Constructor
     public Product() {
@@ -39,6 +42,7 @@ public class Product {
         this.description = description;
         this.expiresOn = expiresOn;
         this.category = category;
+        this.inventoryList = new ArrayList<>();
     }
 
     public Product(String name, String description, LocalDate expiresOn, CategoryEnum category) {
@@ -89,6 +93,13 @@ public class Product {
         this.category = category;
     }
 
+    public List<Inventory> getInventoryList() {
+        return inventoryList;
+    }
+
+    public void setInventoryList(List<Inventory> inventoryList) {
+        this.inventoryList = inventoryList;
+    }
 
     //To String
 
